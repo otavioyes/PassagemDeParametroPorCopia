@@ -1,13 +1,13 @@
 #include <limits>
 #include <iostream>
 
-bool readInt(uint8_t value)
+bool readInt(uint32_t *value)
 {
-    std::cin >> value;
+    std::cin >> *value;
     if(std::cin.fail())
     {
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<uint8_t>::max(), 'n');
+        std::cin.ignore(std::numeric_limits<uint32_t>::max(), 'n');
         return false;
     }
     return true;
@@ -23,9 +23,10 @@ bool readInt(uint8_t value)
 int main()
 {
 
-    uint16_t v = 0;
+    uint32_t v = 0;
+
     std::cout << "Type number: ";
-    if(!readInt(v)){
+    if(!readInt(&v)){
         std::cout << "Number invalid \n";
     }else{
         std::cout << "The number is: " << v << '\n';
