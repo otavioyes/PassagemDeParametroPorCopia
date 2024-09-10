@@ -1,13 +1,18 @@
 #include <limits>
 #include <iostream>
 
-bool readInt(uint32_t *value)
+bool readInt(int *value)
 {
+    if(!value)
+    {
+        return false;
+    }
+
     std::cin >> *value;
     if(std::cin.fail())
     {
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<uint32_t>::max(), 'n');
+        std::cin.ignore(std::numeric_limits<int>::max(), 'n');
         return false;
     }
     return true;
@@ -23,11 +28,11 @@ bool readInt(uint32_t *value)
 int main()
 {
 
-    uint32_t v = 0;
+    int v = 0;
 
     std::cout << "Type number: ";
-    if(!readInt(&v)){
-        std::cout << "Number invalid \n";
+    if(!readInt(nullptr)){
+        std::cout << "Invalid input \n";
     }else{
         std::cout << "The number is: " << v << '\n';
     }
